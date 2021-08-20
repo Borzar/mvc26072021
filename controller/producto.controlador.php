@@ -40,5 +40,15 @@ Class ProductoControlador{
         header("location:?path=producto");
     }
 
+    public function Buscar(){
+        //instancia a la clase producto para usar su estructura.
+        $producto = new Producto();
+        $producto = $this->modelo->BuscarProducto($_POST['nombre']);
+        //luego el controlador debe llamar a una vista para desplegar los datos contendios
+        //en el objeto.
+        require_once "views/header.php";
+        require_once 'views/inicio/listadobusqueda.php';
+    }
+
 
 }

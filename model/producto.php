@@ -48,9 +48,41 @@ Class Producto{
         } catch (Exception $e) {
            die($e->getMessage());
         }
+    }
+
+     public function BuscarProducto($nombre){
+            try {
+                $consulta = $this->pdo->prepare("select * from producto where nombre = ?; ");
+                $consulta->execute(array($nombre));
+                $resultado = $consulta->fetch(PDO::FETCH_OBJ);
+    
+                $producto = new Producto();
+                $producto->setNombre($nombre);
+                $producto->setCantidad($resultado->cantidad);
+                $producto->setPrecio($resultado->precio);
+                return $producto;
+    
+            } catch (Exception $e) {
+    
+                die($e->getMessage());
+            }
+    
+        }
+
+        public function Listar(){
+            try {
+                $consulta = $this->pdo->prepare("select * from producto");
+                $consulta->execute();
+                return $consulta->fetchall(PDO::FETCH_OBJ);
+    
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+    
+    
+        }
 
 
     }
 
-}
 

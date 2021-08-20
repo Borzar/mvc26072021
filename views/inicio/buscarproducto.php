@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <form action="" method="get">
+    <form action="?controller=producto&metodo=Buscar" method="POST">
 
         <label for="txtnombre">Ingrese Nombre Producto</label>
         <input type="text" name="nombre" id="txtnombre">
