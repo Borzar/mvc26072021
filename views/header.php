@@ -34,7 +34,7 @@
       <a href="?controller=producto&metodo=buscarproducto" class="list-group-item list-group-item-action bg-light">Buscar Producto</a>
       </li>
       <li class="nav-item">
-        <a class="list-group-item list-group-item-action bg-light" href="#">Modificar Producto - no disponible</a>
+        <a href="?controller=producto&metodo=actualizarproducto" class="list-group-item list-group-item-action bg-light" href="#">Modificar Producto</a>
       </li>
     </ul>
   </div>

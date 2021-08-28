@@ -29,6 +29,7 @@ Class ProductoControlador{
 
     }
 
+    
     public function Grabar(){
         $producto = new Producto();
         $producto->setNombre($_POST['nombre']);
@@ -37,7 +38,7 @@ Class ProductoControlador{
 
         $this->modelo->Insertar($producto);
 
-        header("location:?path=producto");
+        header("location:?controller=producto");
     }
 
     public function Buscar(){
@@ -49,6 +50,38 @@ Class ProductoControlador{
         require_once "views/header.php";
         require_once 'views/inicio/listadobusqueda.php';
     }
+
+    public function FormActualizarProducto(){
+        
+        $producto = new Producto();
+        if(isset($_GET['nombre'])){
+            $producto = $this->modelo->buscarProducto($_GET['nombre']);
+        }
+        //debo mostrar los datos en una vista para actualizar
+        require_once "views/header.php";
+        require_once "views/inicio/actualizarproducto.php";
+
+    }
+
+    public function ActualizarProducto(){
+
+        $producto = new Producto();
+        $producto->setNombre($_POST['nombre']);
+        $producto->setCantidad($_POST['cantidad']);
+        $producto->setPrecio+($_POST['precio']);
+        //var_dump($producto);
+        $this->modelo->Actualizar($producto);
+
+        header("location:?controller=producto");
+    }
+
+    public function Borrar(){
+
+        $this->modelo->Eliminar($_GET['nombre']);
+        header("location:?controller=producto");
+
+    }
+
 
 
 }

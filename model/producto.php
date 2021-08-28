@@ -82,6 +82,30 @@ Class Producto{
     
         }
 
+        public function Actualizar(Producto $producto){
+
+            try {
+                //var_dump($producto);
+                $consulta = "update producto set nombre = ? where nombre = ?";
+                $this->pdo->prepare($consulta)->execute(array($producto->getNombre(), $producto->getNombre()));
+                //$this->pdo->prepare($consulta)->execute(array($producto->getRut(), $producto->getNombre()));
+    
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+    
+        }
+
+        public function Eliminar($nombre){
+            try {
+                $consulta = "delete from producto where nombre = ?";
+                $this->pdo->prepare($consulta)->execute(array($nombre));
+            } catch (Exception $e) {
+               die($e->getMessage());
+            }
+    
+        }
+
 
     }
 
